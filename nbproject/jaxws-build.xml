@@ -20,8 +20,8 @@
     </target>
     <target name="wsimport-client-HotelReservationService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/HotelReservationService"/>
-        <property name="wsdl-HotelReservationService" location="xml-resources/web-service-references/HotelReservationService/wsdl/10.16.139.202_8080/HotelReservationServicesSOAP/HotelReservationService.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/HotelReservationService" destdir="${build.generated.dir}/jax-wsCache/HotelReservationService" wsdl="${wsdl-HotelReservationService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" wsdlLocation="http://10.16.139.202:8080/HotelReservationServicesSOAP/HotelReservationService?wsdl" xendorsed="true" package="hotelreservationservicesclient">
+        <property name="wsdl-HotelReservationService" location="xml-resources/web-service-references/HotelReservationService/wsdl/localhost_8080/HotelReservationServicesSOAP/HotelReservationService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/HotelReservationService" destdir="${build.generated.dir}/jax-wsCache/HotelReservationService" wsdl="${wsdl-HotelReservationService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" wsdlLocation="http://localhost:8080/HotelReservationServicesSOAP/HotelReservationService?wsdl" xendorsed="true">
             <depends file="${wsdl-HotelReservationService}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/HotelReservationService"/>
         </wsimport>
@@ -33,7 +33,7 @@
     </target>
     <target name="wsimport-client-clean-HotelReservationService" depends="-init-project">
         <delete dir="${build.generated.dir}/jax-wsCache/HotelReservationService"/>
-        <delete dir="${build.generated.sources.dir}/jax-ws/hotelreservationservicesclient"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/hotelreservationservices"/>
     </target>
     <target name="wsimport-client-generate" depends="wsimport-client-HotelReservationService"/>
 </project>

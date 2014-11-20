@@ -4,7 +4,8 @@
  */
 package Test;
 
-import hotelreservationservicesclient.CancellingOfTheHotelFault;
+import hotelreservationservices.CancelHotelFault;
+import hotelreservationservices.HotelsType;
 import javax.xml.datatype.DatatypeConfigurationException;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,28 +23,33 @@ public class HotelReservationTest {
          
          
      }
+     @Test
      public void bookHotelTest()throws DatatypeConfigurationException{
          
      }
+     @Test
      public void cancelHotelTest()throws DatatypeConfigurationException{
          
      }
 
-    private static void getHotel(java.lang.String city, javax.xml.datatype.XMLGregorianCalendar arrivalDate, javax.xml.datatype.XMLGregorianCalendar departureDate, javax.xml.ws.Holder<hotelreservationservicesclient.HotelType> hotelsNameArray, javax.xml.ws.Holder<java.lang.String> addressOfHotel, javax.xml.ws.Holder<Integer> bookingNr, javax.xml.ws.Holder<Float> priceForWholeStay) {
-        hotelreservationservicesclient.HotelReservationService service = new hotelreservationservicesclient.HotelReservationService();
-        hotelreservationservicesclient.HotelReservationServices port = service.getHotelReservationServicesBindingPort();
-        port.getHotel(city, arrivalDate, departureDate, hotelsNameArray, addressOfHotel, bookingNr, priceForWholeStay);
+    private static boolean bookHotel(int bookingNumber, hotelreservationservices.CreditCardType creditCard) {
+        hotelreservationservices.HotelReservationService service = new hotelreservationservices.HotelReservationService();
+        hotelreservationservices.HotelReservationServices port = service.getHotelReservationServicesBindingPort();
+        return port.bookHotel(bookingNumber, creditCard);
     }
 
-    private static boolean bookHotel(int bookingNr, hotelreservationservicesclient.CreditcardInformationType creditcardInformation) {
-        hotelreservationservicesclient.HotelReservationService service = new hotelreservationservicesclient.HotelReservationService();
-        hotelreservationservicesclient.HotelReservationServicesbookHotel port = service.getHotelReservationServicesbookHotelBindingPort();
-        return port.bookHotel(bookingNr, creditcardInformation);
+    private static boolean cancelHotel(int bookingNumber) throws CancelHotelFault {
+        hotelreservationservices.HotelReservationService service = new hotelreservationservices.HotelReservationService();
+        hotelreservationservices.HotelReservationServices port = service.getHotelReservationServicesBindingPort();
+        return port.cancelHotel(bookingNumber);
     }
 
-    private static String cancelHotel(int bookingNr) throws CancellingOfTheHotelFault {
-        hotelreservationservicesclient.HotelReservationService service = new hotelreservationservicesclient.HotelReservationService();
-        hotelreservationservicesclient.HotelReservationServicescancelHotel port = service.getHotelReservationServicescancelHotelBindingPort();
-        return port.cancelHotel(bookingNr);
+    private static HotelsType getHotels(java.lang.String city, javax.xml.datatype.XMLGregorianCalendar arrival, javax.xml.datatype.XMLGregorianCalendar departure) {
+        hotelreservationservices.HotelReservationService service = new hotelreservationservices.HotelReservationService();
+        hotelreservationservices.HotelReservationServices port = service.getHotelReservationServicesBindingPort();
+        return port.getHotels(city, arrival, departure);
     }
+
+    
+   
 }
