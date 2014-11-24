@@ -6,7 +6,10 @@ package Test;
 
 import hotelreservationservices.CancelHotelFault;
 import hotelreservationservices.HotelsType;
+import java.util.List;
 import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,12 +18,11 @@ import static org.junit.Assert.*;
  * @author khannoori
  */
 public class HotelReservationTest {
-     final String HOTEL_URI = "http://10.16.139.202:8080/RestWebService/webresources/hotel";
+     final String HOTEL_URI = "localhost:8080/RestWebService/webresources/hotel";
 
     
      @Test
      public void getHotelTest()throws DatatypeConfigurationException {
-         
          
      }
      @Test
@@ -50,6 +52,5 @@ public class HotelReservationTest {
         return port.getHotels(city, arrival, departure);
     }
 
-    
    
 }
